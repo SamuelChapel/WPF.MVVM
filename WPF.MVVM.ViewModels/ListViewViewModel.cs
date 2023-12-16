@@ -27,7 +27,7 @@ public class ListViewViewModel : ViewModelBase
 			searchString = value;
 			OnPropertyChanged(nameof(searchString));
 
-			EmployeesView.Filter = value is null ? null : new Predicate<object>(p => ((Person)p).FirstName.Contains(value) || ((Person)p).LastName.Contains(value));
+			EmployeesView.Filter = value is null ? null : new Predicate<object>(p => ((Person)p).FirstName.Contains(value, StringComparison.CurrentCultureIgnoreCase) || ((Person)p).LastName.Contains(value, StringComparison.CurrentCultureIgnoreCase));
 		}
 	}
 
